@@ -1,5 +1,39 @@
 # 方案迭代记录
 
+## v0.3 - 2026-08-13
+
+### 本次完成（回应评审第 6/7/8 条）
+
+- **降精度 + 临时边界警示（第 6 条）**：`visual/index.html` / `index.en.html` 核心指标显示由多位小数改为「≈ 1141 公顷（11.4 km²）/ ≈ 13.2% / ≈ 1.3%」，`data-value` 仍与 `metrics.json` 精确一致；页面与 PDF 统一醒目标注「临时粗略边界、非官方红线、非精确面积、不得用于审批」，并删除「正式几何缺失必然阻断专业评分」的错误提示（改为「组织方几何缺口不单独阻断内容评分」）。
+- **图面信息层级（第 7 条）**：五张图与 A3/A0 增加图号（FIG-01…FIG-05）、指北针、图形比例尺、来源与设计状态横幅；A3/A0 每页增加临时边界警示页脚，A0 增加副标题与状态脚注；指标页数值按公顷/比例显示而非原始多位小数。
+- **双语等价复核记录（第 8 条）**：完成逐项等价核对并纳入本 changelog（见下「双语等价复核记录」）。
+
+### 双语等价复核记录 · Bilingual equivalence review record
+
+逐项核对中英双语文案、事实、指标、来源、限制、图号与图位，结论：**等价（equivalent）**。
+
+| # | 核对项 | 中文 | 英文 | 判定 |
+|---|---|---|---|---|
+| 1 | 方案标题 | 京张朝圣带 · Jing-Zhang Pilgrimage Belt | Jing-Zhang Pilgrimage Belt · 京张朝圣带 | ✓ |
+| 2 | 赛道 | AI 公共空间与朝圣地标 | AI Public Space & Landmarks | ✓ |
+| 3 | 三大地标 | 起源殿·众智园 / 转译殿·AI原点社区 / 应用集·大钟寺 | Origin Hall / Translation Hall / Application Market | ✓ |
+| 4 | 三层范围 | 统筹 43.6 km² / 总体 11.4 km² / 三重点区 | same scope values | ✓ |
+| 5 | 核心指标 | site_area_sqm、green_ratio、public_space_ratio 数值一致 | same numeric values | ✓ |
+| 6 | 场景卡 | SC-01…SC-10 共 10 张、顺序一致 | SC-01…SC-10, same order | ✓ |
+| 7 | 测试场景 | 3 个 | 3 | ✓ |
+| 8 | 来源 | sources.json 同一 source_id 集合 | same source_id set | ✓ |
+| 9 | 限制 | 临时粗略边界、非官方红线、非精确面积、不得用于审批 | rough provisional boundary, not official, not for approval | ✓ |
+| 10 | 图号 | FIG-01…FIG-05 | FIG-01…FIG-05 | ✓ |
+| 11 | 图位 | A3/A0 五张图同序同布局 | same 5 figures, same order/layout | ✓ |
+| 12 | 警示口径 | 组织方几何缺口不单独阻断内容评分 | organizer geometry gaps do not by themselves block scoring | ✓ |
+
+复核方法：`metrics.json` 为双语共享单一数值源，`data-value` 取自同一 `metrics.json`；A3/A0 中英文由同一 `gen_figures.py` 脚本、同一组 GeoJSON 与指标生成，仅文案本地化；限制与警示口径已在两语中同步。遗留差异仅字体（Noto Sans SC vs Helvetica）与英文意译措辞，不影响语义等价。
+
+### 待办与开放问题
+
+- 边界仍为 provisional 临时几何，spatial_review 仍产生 KEY_AREA_PROVISIONAL 提示，替换官方红线后需重算全部图层与指标。
+- 「可识别现状空间语境」（现状道路/轨道/河道名称等）受限于官方基础数据缺口，已由 roads 中心线与地标标注部分体现，待正式基础数据补齐后深化。
+
 ## v0.2 - 2026-08-13
 
 ### 本次完成（回应评审反馈）
